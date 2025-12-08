@@ -2,9 +2,7 @@ from typing import Optional, List
 from sqlalchemy.orm import Session
 import models
 
-# -----------------------------
-# Below are helper functions for "User" table.
-# -----------------------------
+# Helper functions for "User" table.
 def get_user_by_username(db: Session, username: str) -> Optional[models.User]:
     # This function returns the user with the given username, or None if not found.
     return (
@@ -37,9 +35,7 @@ def get_or_create_user(db: Session, username: str) -> models.User:
         return user
     return create_user(db, username)
 
-# -----------------------------
-# Below are helper functions for "CalculationRecord" table.
-# -----------------------------
+# Helper functions for "CalculationRecord" table.
 def create_calc_record(
     db: Session,
     user_id: Optional[int],
