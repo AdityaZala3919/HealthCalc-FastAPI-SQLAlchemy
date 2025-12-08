@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Metrics Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Health Metrics</h2>
+            <p>Calculator</p>
+        </div>
+        
+        <div class="username-sidebar">
+            <label for="username">👤 Username</label>
+            <input type="text" id="username" placeholder="Enter to save history">
+            <small>Optional - saves your calculations</small>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="tab-btn active" data-tab="bmi">
+                <span class="icon">📊</span> BMI
+            </button>
+            <button class="tab-btn" data-tab="body-fat">
+                <span class="icon">💪</span> Body Fat
+            </button>
+            <button class="tab-btn" data-tab="calorie">
+                <span class="icon">🔥</span> Calories
+            </button>
+            <button class="tab-btn" data-tab="bmr">
+                <span class="icon">⚡</span> BMR
+            </button>
+            <button class="tab-btn" data-tab="ideal-weight">
+                <span class="icon">⚖️</span> Ideal Weight
+            </button>
+            <button class="tab-btn" data-tab="history">
+                <span class="icon">📜</span> History
+            </button>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="top-header">
+            <h1>Welcome to Health Metrics Calculator</h1>
+            <p>Select a calculator from the sidebar to get started</p>
+        </header>
+
+        <!-- BMI Calculator -->
+        <div id="bmi-tab" class="tab-content active">
+            <div class="content-wrapper">
+                <h2>BMI Calculator</h2>
+                <div class="two-column">
+                    <form id="bmi-form" class="calc-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bmi-age">Age (years)</label>
+                                <input type="number" id="bmi-age" required min="1" max="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="bmi-gender">Gender</label>
+                                <select id="bmi-gender" required>
+                                    <option value="">Select...</option>
+                                    <option value="true">Male</option>
+                                    <option value="false">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bmi-weight">Weight (kg)</label>
+                                <input type="number" id="bmi-weight" required min="1" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label for="bmi-height">Height (cm)</label>
+                                <input type="number" id="bmi-height" required min="1" step="0.1">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-calculate">Calculate BMI</button>
+                    </form>
+                    <div id="bmi-result" class="result-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body Fat Calculator -->
+        <div id="body-fat-tab" class="tab-content">
+            <div class="content-wrapper">
+                <h2>Body Fat Percentage Calculator</h2>
+                <div class="two-column">
+                    <form id="body-fat-form" class="calc-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bf-age">Age (years)</label>
+                                <input type="number" id="bf-age" required min="1" max="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="bf-gender">Gender</label>
+                                <select id="bf-gender" required>
+                                    <option value="">Select...</option>
+                                    <option value="true">Male</option>
+                                    <option value="false">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bf-weight">Weight (kg)</label>
+                                <input type="number" id="bf-weight" required min="1" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label for="bf-height">Height (cm)</label>
+                                <input type="number" id="bf-height" required min="1" step="0.1">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bf-neck">Neck (cm)</label>
+                                <input type="number" id="bf-neck" required min="1" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label for="bf-waist">Waist (cm)</label>
+                                <input type="number" id="bf-waist" required min="1" step="0.1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bf-hip">Hip (cm)</label>
+                            <input type="number" id="bf-hip" required min="1" step="0.1">
+                        </div>
+                        <button type="submit" class="btn-calculate">Calculate Body Fat</button>
+                    </form>
+                    <div id="body-fat-result" class="result-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calorie Calculator -->
+        <div id="calorie-tab" class="tab-content">
+            <div class="content-wrapper">
+                <h2>Daily Calorie Needs Calculator</h2>
+                <div class="two-column">
+                    <form id="calorie-form" class="calc-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cal-age">Age (years)</label>
+                                <input type="number" id="cal-age" required min="1" max="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="cal-gender">Gender</label>
+                                <select id="cal-gender" required>
+                                    <option value="">Select...</option>
+                                    <option value="true">Male</option>
+                                    <option value="false">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cal-weight">Weight (kg)</label>
+                                <input type="number" id="cal-weight" required min="1" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label for="cal-height">Height (cm)</label>
+                                <input type="number" id="cal-height" required min="1" step="0.1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cal-activity">Activity Level</label>
+                            <select id="cal-activity" required>
+                                <option value="">Select...</option>
+                                <option value="Sedentary">Sedentary (little/no exercise)</option>
+                                <option value="Lightly Active">Lightly Active (1-3 days/week)</option>
+                                <option value="Moderately Active">Moderately Active (3-5 days/week)</option>
+                                <option value="Very Active">Very Active (6-7 days/week)</option>
+                                <option value="Extra Active">Extra Active (physical job/training)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-calculate">Calculate Calories</button>
+                    </form>
+                    <div id="calorie-result" class="result-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BMR Calculator -->
+        <div id="bmr-tab" class="tab-content">
+            <div class="content-wrapper">
+                <h2>BMR (Basal Metabolic Rate) Calculator</h2>
+                <div class="two-column">
+                    <form id="bmr-form" class="calc-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bmr-age">Age (years)</label>
+                                <input type="number" id="bmr-age" required min="1" max="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="bmr-gender">Gender</label>
+                                <select id="bmr-gender" required>
+                                    <option value="">Select...</option>
+                                    <option value="true">Male</option>
+                                    <option value="false">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bmr-weight">Weight (kg)</label>
+                                <input type="number" id="bmr-weight" required min="1" step="0.1">
+                            </div>
+                            <div class="form-group">
+                                <label for="bmr-height">Height (cm)</label>
+                                <input type="number" id="bmr-height" required min="1" step="0.1">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-calculate">Calculate BMR</button>
+                    </form>
+                    <div id="bmr-result" class="result-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ideal Weight Calculator -->
+        <div id="ideal-weight-tab" class="tab-content">
+            <div class="content-wrapper">
+                <h2>Ideal Weight Calculator</h2>
+                <div class="two-column">
+                    <form id="ideal-weight-form" class="calc-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="iw-age">Age (years)</label>
+                                <input type="number" id="iw-age" required min="1" max="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="iw-gender">Gender</label>
+                                <select id="iw-gender" required>
+                                    <option value="">Select...</option>
+                                    <option value="true">Male</option>
+                                    <option value="false">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="iw-height">Height (cm)</label>
+                            <input type="number" id="iw-height" required min="1" step="0.1">
+                        </div>
+                        <button type="submit" class="btn-calculate">Calculate Ideal Weight</button>
+                    </form>
+                    <div id="ideal-weight-result" class="result-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Tab -->
+        <div id="history-tab" class="tab-content">
+            <div class="content-wrapper history-content">
+                <h2>Calculation History</h2>
+                <div class="history-controls">
+                    <button id="load-history-btn" class="btn-calculate">Load All History</button>
+                    
+                    <div class="history-operations">
+                        <h3>Get/Update Record</h3>
+                        <input type="number" id="history-record-id" placeholder="Record ID">
+                        <div class="btn-group">
+                            <button id="get-record-btn" class="btn-secondary">Get Record</button>
+                        </div>
+                        <textarea id="update-inputs-json" rows="2" placeholder='Update Inputs JSON (optional)'></textarea>
+                        <textarea id="update-result-json" rows="2" placeholder='Update Result JSON (optional)'></textarea>
+                        <button id="update-record-btn" class="btn-secondary">Update Record</button>
+                    </div>
+                </div>
+
+                <div id="single-record-result" class="result-box"></div>
+                <div id="update-record-result" class="result-box"></div>
+                <div id="history-result" class="history-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
