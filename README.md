@@ -63,6 +63,16 @@ HealthMetricsTracking/
     └── main.js          # API integration & interactivity
 ```
 
+"""
+To run the code:
+
+1. "python -m http.server 8080 --directory frontend"
+
+2. "uvicorn main:app --reload"
+
+3. Open "http://localhost:8080"
+"""
+
 ## Notes
 
 - Gender field: `true` = Male, `false` = Female
