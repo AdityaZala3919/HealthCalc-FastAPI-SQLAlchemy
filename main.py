@@ -1,10 +1,13 @@
 from fastapi import FastAPI, HTTPException, Depends, Query
 from typing import Optional, List
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from database import get_db, engine, Base
 from sqlalchemy.orm import Session
 from contextlib import asynccontextmanager
+import pathlib
 
 import models
 import crud
@@ -31,6 +34,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve static files at /static
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
+# Serve index.html at root
+@app.get("/", include_in_schema=False)
+def serve_spa_index():
+    index_path = pathlib.Path("frontend") / "index.html"
+    return FileResponse(index_path)
 
 # Request Models
 class BMIRequest(BaseModel):
