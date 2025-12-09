@@ -311,26 +311,3 @@ def delete_history_record(
         raise HTTPException(status_code=404, detail="Record not found or not owned by user")
 
     return {"detail": "Record deleted successfully"}
-
-"""
-I need a modern, responsive web UI for a Health Metrics Calculator app. It should have a clean, professional look (like calculator.net) and support the following calculators as tabs or sections:
-
-BMI Calculator (inputs: age, gender, weight, height)
-Body Fat Calculator (inputs: age, gender, weight, height, neck, waist, hip)
-Calorie Calculator (inputs: age, gender, weight, height, activity level)
-BMR Calculator (inputs: age, gender, weight, height)
-Ideal Weight Calculator (inputs: age, gender, height)
-Each calculator should have its own form, a submit button, and a result display area. Use clear labels, good spacing, and visually appealing buttons. The design should work well on desktop and mobile.
-
-Please generate the HTML, CSS, and any necessary JavaScript for the UI only (no backend logic). Use unique IDs for forms and result boxes so I can connect them to my backend later.
-"""
-
-"""
-To run the code:
-
-1. "python -m http.server 8080 --directory frontend"
-
-2. "uvicorn main:app --reload"
-
-3. Open "http://localhost:8080"
-"""
